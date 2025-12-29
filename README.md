@@ -1,37 +1,69 @@
 # NotePand
 
-A simple notes application built with pure HTML, CSS, and JavaScript.
-This project starts as a frontend-only app and will be gradually expanded.
+A simple web app to **add, view, and store notes** using HTML, CSS, JS, PHP, and MySQL.
 
-## Current Features
-- Add notes
-- Delete notes
-- Notes displayed dynamically without page reload
-- Clean and minimal UI
-- No frameworks
+---
 
-## Technologies (current)
-- HTML
-- CSS
-- JavaScript (Vanilla)
+## Features
 
-## Planned Features (Future Updates)
-- Connect to backend (PHP)
-- Store notes permanently in MySQL database
-- Load notes from database on page load
-- Edit existing notes
-- Timestamps for notes (created / updated)
-- Better UI and animations
-- Optional search and filtering
-- Error handling and validation
-- REST-style API structure
+- Add notes with title and content
+- Notes are stored in **MySQL database**
+- Notes load dynamically on page load
+- Frontend built with **HTML, CSS, JavaScript**
+- Backend built with **PHP**
 
-## Technologies (planned)
-- PHP (backend)
-- MySQL (database)
-- Fetch API (AJAX communication)
+---
 
-## How to run (current version)
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/PanddEra/NotePand
+## Project Structure
+
+```
+notes-app/
+│
+├── index.html 
+├── css/
+│ └── style.css 
+├── js/
+│ └── app.js 
+└── php/
+  ├── db.php 
+  ├── add_note.php 
+  ├── get_notes.php
+  ├── update_note.php
+  └── delete_note.php
+```
+---
+
+## Setup (Local XAMPP)
+
+1. Move `NotePand` to `C:\xampp\htdocs\`
+2. Start **Apache** and **MySQL** in XAMPP
+3. Create MySQL database:
+
+```sql
+CREATE DATABASE notes_app;
+CREATE TABLE notes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+Open in browser:
+`http://localhost/NotePand/index.html`
+
+Usage
+ - Enter title and content
+
+ - Click Add Note
+
+ - Notes appear below and are saved in MySQL
+
+Future Updates
+ - Delete notes functionality
+
+ - Edit notes
+
+ - User accounts / login system
+
+ - Better styling / mobile responsive
