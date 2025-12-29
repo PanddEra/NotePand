@@ -1,4 +1,4 @@
-# Simple Notes App
+# NotePand
 
 A simple notes application built with pure HTML, CSS, and JavaScript.
 This project starts as a frontend-only app and will be gradually expanded.
@@ -34,4 +34,4 @@ This project starts as a frontend-only app and will be gradually expanded.
 ## How to run (current version)
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/notes-app.git
+   git clone https://github.com/PanddEra/NotePand
