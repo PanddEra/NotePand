@@ -3,7 +3,8 @@
 $host = "localhost";
 $dbname = "notes_app";
 $user = "root";
-$pass = ""; // usually empty in XAMPP
+$pass = "";
+global $pdo;
 
 try {
     $pdo = new PDO(
