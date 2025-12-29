@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$dbname = "notes_app";
+$dbname = "notepand";
 $user = "root";
 $pass = "";
 global $pdo;
