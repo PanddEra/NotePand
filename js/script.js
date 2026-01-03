@@ -43,12 +43,15 @@ async function loadNotes() {
         div.innerHTML = `
         <h3>${note.title}</h3>
         <p>${note.content}</p>
+        <button class="edit-btn">Edit</button>
         <button data-id="${note.id}">Delete</button>
     `;
 
-        const deleteBtn = div.querySelector('button');
-        deleteBtn.addEventListener('click', () => {
+        div.querySelector('button').addEventListener('click', () => {
             deleteNote(note.id);
+        });
+        div.querySelector('.edit-btn').addEventListener('click', () => {
+            editNote(note);
         });
 
         noteList.appendChild(div);
@@ -60,6 +63,26 @@ async function deleteNote(id) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id })
+    });
+
+    await loadNotes();
+}
+
+function editNote(note) {
+    const newTitle = prompt('Edit title:', note.title);
+    if (newTitle === null) return;
+
+    const newContent = prompt('Edit content:', note.content);
+    if (newContent === null) return;
+
+    updateNote(note.id, newTitle, newContent).then(() => '');
+}
+
+async function updateNote(id, title, content) {
+    await fetch('php/update_note.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, title, content })
     });
 
     await loadNotes();

@@ -9,7 +9,7 @@ A simple web app to **add, view, and store notes** using HTML, CSS, JS, PHP, and
 - Add notes with title and content
 - Notes are stored in **MySQL database**
 - Notes load dynamically on page load
-- Note delete using button
+- Edit or delete note with button
 - Frontend built with **HTML, CSS, JavaScript**
 - Backend built with **PHP**
 
@@ -60,11 +60,11 @@ Usage
 
  - Notes appear below and are saved in MySQL
 
- - Delete note with button
+ - Delete or edit note with buttons
+
 
 
 Future Updates
- - Edit notes
 
  - User accounts / login system
 
