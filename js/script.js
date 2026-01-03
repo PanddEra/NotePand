@@ -36,4 +36,31 @@ async function loadNotes() {
             <p>${note.content}</p>;`
         noteList.appendChild(div);
     });
+
+    notes.forEach(note => {
+        const div = document.createElement('div');
+        div.className = 'note-card';
+        div.innerHTML = `
+        <h3>${note.title}</h3>
+        <p>${note.content}</p>
+        <button data-id="${note.id}">Delete</button>
+    `;
+
+        const deleteBtn = div.querySelector('button');
+        deleteBtn.addEventListener('click', () => {
+            deleteNote(note.id);
+        });
+
+        noteList.appendChild(div);
+    });
+}
+
+async function deleteNote(id) {
+    await fetch('php/delete_note.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+    });
+
+    await loadNotes();
 }
