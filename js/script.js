@@ -31,23 +31,14 @@ async function loadNotes() {
     notes.forEach(note => {
         const div = document.createElement('div');
         div.className = 'note-card';
-        div.innerHTML =
-            `<h3>${note.title}</h3>
-            <p>${note.content}</p>;`
-        noteList.appendChild(div);
-    });
-
-    notes.forEach(note => {
-        const div = document.createElement('div');
-        div.className = 'note-card';
         div.innerHTML = `
         <h3>${note.title}</h3>
         <p>${note.content}</p>
         <button class="edit-btn">Edit</button>
-        <button data-id="${note.id}">Delete</button>
+        <button class="delete-btn" data-id="${note.id}">Delete</button>
     `;
 
-        div.querySelector('button').addEventListener('click', () => {
+        div.querySelector('.delete-btn').addEventListener('click', () => {
             deleteNote(note.id);
         });
         div.querySelector('.edit-btn').addEventListener('click', () => {
@@ -68,14 +59,14 @@ async function deleteNote(id) {
     await loadNotes();
 }
 
-function editNote(note) {
+async function editNote(note) {
     const newTitle = prompt('Edit title:', note.title);
     if (newTitle === null) return;
 
     const newContent = prompt('Edit content:', note.content);
     if (newContent === null) return;
 
-    updateNote(note.id, newTitle, newContent).then(() => '');
+    await updateNote(note.id, newTitle, newContent);
 }
 
 async function updateNote(id, title, content) {
@@ -87,3 +78,4 @@ async function updateNote(id, title, content) {
 
     await loadNotes();
 }
+loadNotes();
